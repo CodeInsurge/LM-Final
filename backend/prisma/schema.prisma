@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model legacy_users {
+  user_id           Int    @id @default(autoincrement())
+  email             String
+  f_name            String
+  l_name            String
+  u_name            String
+  password          String
+  s_address         String
+  apartment         String
+  state             String
+  city              String
+  zip_code          String
+  phone_number      String
+  alt_email         String
+  profile_photo_url String
+  cover_photo_url   String
+}
+
+model lm_marker {
+  m_id         Int      @id @default(autoincrement())
+  user_id      Int
+  m_name       String?
+  m_profile    String?
+  m_dob        DateTime?
+  m_dod        DateTime?
+  about_m      String?
+  rel_profile  String?
+  rel_name     String?
+  relationship String?
+  rel_link     String?
+  place_city   String?
+  place_state  String?
+  start_place  DateTime?
+  end_place    DateTime?
+  inst_name    String?
+  start_edu    DateTime?
+  end_edu      DateTime?
+  eulogy       String?
+  createdAt    DateTime  @default(now())
+}
